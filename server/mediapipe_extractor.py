@@ -11,6 +11,7 @@ OUTPUT_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'client', 
 # Initialize MediaPipe modules (works with mediapipe 0.10.x)
 mp_pose  = mp.solutions.pose
 mp_hands = mp.solutions.hands
+mp_face  = mp.solutions.face_mesh
 
 def process_video(video_path, output_json_name=None):
     if not os.path.exists(video_path):
@@ -41,7 +42,11 @@ def process_video(video_path, output_json_name=None):
         min_tracking_confidence=0.3,
         max_num_hands=2,
         model_complexity=1
-    ) as hands:
+    ) as hands, mp_face.FaceMesh(
+        min_detection_confidence=0.3,
+        min_tracking_confidence=0.3,
+        refine_landmarks=True
+    ) as face_mesh:
 
         frame_idx = 0
         while cap.isOpened():
@@ -54,6 +59,7 @@ def process_video(video_path, output_json_name=None):
 
             pose_results  = pose.process(image_rgb)
             hands_results = hands.process(image_rgb)
+            face_results  = face_mesh.process(image_rgb)
 
             image_rgb.flags.writeable = True
 
@@ -62,7 +68,8 @@ def process_video(video_path, output_json_name=None):
                 "pose": [],
                 "pose3d": [],
                 "left_hand": [],
-                "right_hand": []
+                "right_hand": [],
+                "face": []
             }
 
             # 2D Pose landmarks
@@ -101,6 +108,15 @@ def process_video(video_path, output_json_name=None):
                         frame_data["right_hand"] = lm_list
                     else:
                         frame_data["left_hand"] = lm_list
+            
+            # Face landmarks
+            if face_results.multi_face_landmarks:
+                # We usually just take the first face detected
+                face_lms = face_results.multi_face_landmarks[0]
+                for idx, lm in enumerate(face_lms.landmark):
+                    frame_data["face"].append({
+                        "id": idx, "x": lm.x, "y": lm.y, "z": lm.z
+                    })
 
             frames_data.append(frame_data)
             frame_idx += 1

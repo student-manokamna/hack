@@ -140,59 +140,83 @@ function LearnSign() {
   }
 
   return (
-    <div className='container-fluid'>
-      <div className='row'>
+    <div className='container-fluid py-4' style={{ minHeight: '100vh', paddingTop: '85px !important' }}>
+      <div className='row g-4' style={{ marginTop: '40px' }}>
+        {/* Left Side: Controls */}
         <div className='col-md-3'>
-            <h1 className='heading'>
-              Alphabets
-            </h1>
-            <div className='row'>
-                {
-                    alphaButtons
-                }
+          <div className="glass p-4 h-100 d-flex flex-column" style={{ maxHeight: '80vh' }}>
+            <h2 className='gradient-text mb-4 flex-shrink-0' style={{ fontWeight: 800, fontSize: '1.5rem' }}>
+              Library
+            </h2>
+            <div className="overflow-auto pe-2" style={{ flexGrow: 1 }}>
+              <div className="mb-4">
+                <h6 className="text-uppercase mb-3" style={{ fontSize: '0.75rem', letterSpacing: '0.1em', opacity: 0.6 }}>Alphabets</h6>
+                <div className='row g-2'>
+                  {alphaButtons}
+                </div>
+              </div>
+
+              <div>
+                <h6 className="text-uppercase mb-3" style={{ fontSize: '0.75rem', letterSpacing: '0.1em', opacity: 0.6 }}>Words</h6>
+                <div className='row g-2'>
+                  {wordButtons}
+                </div>
+              </div>
             </div>
-            <h1 className='heading'>
-              Words
-            </h1>
-            <div className='row'>
-                {
-                    wordButtons
-                }
-            </div>
+          </div>
         </div>
+
+        {/* Center: Viewer */}
         <div className='col-md-7'>
-          <div id='canvas'/>
+          <div className="glass p-0 overflow-hidden" style={{ position: 'relative', height: 'calc(100vh - 120px)' }}>
+            <div id='canvas' style={{ width: '100%', height: '100%' }} />
+            <div style={{ position: 'absolute', top: 20, left: 20 }}>
+               <span className="tech-badge">CODECRAFTERS LEARNING ENGINE</span>
+            </div>
+          </div>
         </div>
+
+        {/* Right Side: Configuration */}
         <div className='col-md-2'>
-          <p className='bot-label'>
-            Select Avatar
-          </p>
-          <img src={xbotPic} className='bot-image col-md-11' onClick={()=>{setBot(xbot)}} alt='Avatar 1: XBOT'/>
-          <img src={ybotPic} className='bot-image col-md-11' onClick={()=>{setBot(ybot)}} alt='Avatar 2: YBOT'/>
-          <p className='label-style'>
-            Animation Speed: {Math.round(speed*100)/100}
-          </p>
-          <input
-            type="range"
-            min={0.05}
-            max={0.50}
-            step={0.01}
-            value={speed}
-            onChange={(e) => setSpeed(parseFloat(e.target.value))}
-            className='w-100'
-          />
-          <p className='label-style mt-3'>
-            Pause time: {pause} ms
-          </p>
-          <input
-            type="range"
-            min={0}
-            max={2000}
-            step={100}
-            value={pause}
-            onChange={(e) => setPause(parseInt(e.target.value))}
-            className='w-100'
-          />
+          <div className="glass p-4 h-100" style={{ maxHeight: '80vh', overflowY: 'auto' }}>
+            <h5 className='mb-4' style={{ fontWeight: 700 }}>Settings</h5>
+
+            <p className='label-style mb-2' style={{ opacity: 0.7 }}>Select Avatar</p>
+            <div className="d-flex flex-column gap-3 mb-4">
+              <div className={`bot-image-container ${bot === xbot ? 'active' : ''}`} onClick={() => setBot(xbot)} style={{ cursor: 'pointer', borderRadius: 12, overflow: 'hidden', border: bot === xbot ? '2px solid var(--primary)' : '2px solid transparent' }}>
+                <img src={xbotPic} className='w-100' alt='XBOT' />
+              </div>
+              <div className={`bot-image-container ${bot === ybot ? 'active' : ''}`} onClick={() => setBot(ybot)} style={{ cursor: 'pointer', borderRadius: 12, overflow: 'hidden', border: bot === ybot ? '2px solid var(--primary)' : '2px solid transparent' }}>
+                <img src={ybotPic} className='w-100' alt='YBOT' />
+              </div>
+            </div>
+
+            <div className="mb-4">
+              <p className='label-style mb-1'>Speed: {Math.round(speed * 100) / 100}</p>
+              <input
+                type="range"
+                min={0.05}
+                max={0.50}
+                step={0.01}
+                value={speed}
+                onChange={(e) => setSpeed(parseFloat(e.target.value))}
+                className='w-100 custom-range'
+              />
+            </div>
+
+            <div className="mb-4">
+              <p className='label-style mb-1'>Pause: {pause}ms</p>
+              <input
+                type="range"
+                min={0}
+                max={2000}
+                step={100}
+                value={pause}
+                onChange={(e) => setPause(parseInt(e.target.value))}
+                className='w-100 custom-range'
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -70,7 +70,7 @@ else:
     print("⚠️  No GEMINI_API_KEY found in .env — translation will be skipped.")
 
 # ── FastAPI app ───────────────────────────────────────────────────────────────
-app = FastAPI(title="ISL Sign Kit API", version="1.0.0")
+app = FastAPI(title="CodeCrafters API", version="1.0.0")
 
 app.add_middleware(
     CORSMiddleware,
@@ -249,7 +249,8 @@ async def transcribe_and_sign(audio: UploadFile = File(...)):
         print(f"STEP 3 ✅  Sequence ({len(animation_sequence)} clips):")
         for clip in animation_sequence:
             icon = '✔️' if clip['type'] == 'sign' else '✏️'
-            print(f"         {icon} '{clip['word']}' → {clip['file']}")
+            has_face = " (with Face Data)" if (isinstance(clip.get("file"), dict) and ("face" in clip["file"] or "blendshapes" in clip["file"])) else ""
+            print(f"         {icon} '{clip['word']}' -> {clip['file']}{has_face}")
         print(f"{'='*55}\n")
 
         return JSONResponse({

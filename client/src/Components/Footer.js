@@ -9,7 +9,7 @@ function Footer() {
                 <div className="container">
                     <div className="row py-4 d-flex justify-content-center align-items-center">
                         <div className="col-md-6 col-lg-5 text-center footer-text text-white">
-                            Check out our <a href="https://github.com/spectre900/Audio-to-Sign-Language-using-3D-Avatars" className='footer-link'>Github repo</a> for more information!
+                            CodeCrafters — Empowering Accessibility through AI
                         </div>
                     </div>
                 </div>
@@ -19,39 +19,38 @@ function Footer() {
                 <div className="container text-md-left mt-5">
                     <div className="row mt-3">
                         <div className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-                            <h6 className="text-uppercase font-weight-bold">SIGN KIT</h6>
+                            <h6 className="text-uppercase font-weight-bold">CODECRAFTERS</h6>
                             <hr className="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style={{width:'60px'}}/>
-                            <p className='footer-text'>A comprehensive toolkit containing various features related to Indian Sign Language.</p>
+                            <p className='footer-text'>The ultimate accessibility studio for real-time sign language translation and learning.</p>
                         </div>
                         <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
                             <h6 className="text-uppercase font-weight-bold">Services</h6>
                             <hr className="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style={{width:'60px'}} />
-                            <p><Link to='/sign-kit/convert' className='footer-link'>Convert</Link></p>
-                            <p><Link to='/sign-kit/learn-sign' className='footer-link'>Learn Sign</Link></p>
-                            <p><Link to='/sign-kit/all-videos' className='footer-link'>Videos</Link></p>
+                            <p><Link to='/codecrafters/convert' className='footer-link'>Studio</Link></p>
+                            <p><Link to='/codecrafters/learn-sign' className='footer-link'>Learn</Link></p>
+                            <p><Link to='/codecrafters/all-videos' className='footer-link'>Gallery</Link></p>
                         </div>
 
                         <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-                            <h6 className="text-uppercase font-weight-bold">Useful links</h6>
+                            <h6 className="text-uppercase font-weight-bold">Resources</h6>
                             <hr className="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style={{width:'60px'}} />
-                            <p><Link to='/sign-kit/home' className='footer-link'>Home</Link></p>
-                            <p><Link to='/sign-kit/feedback' className='footer-link'>Feedback</Link></p>
-                            <p><a href="https://github.com/spectre900/Audio-to-Sign-Language-using-3D-Avatars" className='footer-link'>Github repo</a></p>
+                            <p><Link to='/codecrafters/home' className='footer-link'>Home</Link></p>
+                            <p><Link to='/codecrafters/feedback' className='footer-link'>Feedback</Link></p>
+                            <p><Link to='/codecrafters/create-video' className='footer-link'>Create Content</Link></p>
                         </div>
 
                         <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-                            <h6 className="text-uppercase font-weight-bold">Contact</h6>
+                            <h6 className="text-uppercase font-weight-bold">Powered By</h6>
                             <hr className="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style={{width:'60px'}}/>
-                            <p><i className="fa fa-lg fa-home me-3 ms-0"></i><span className='footer-text'> NITK Surathkal, Mangalore</span></p>
-                            <p><i className="fa fa-envelope me-3 ms-0"></i><span className='footer-text'> aprameyadash.191it209@nitk.edu.in </span> </p>
-                            <p><i className="fa fa-envelope me-3 ms-0"></i><span className='footer-text'> pratham.191it241@nitk.edu.in </span> </p>
-                            <p><i className="fa fa-phone me-3 ms-0"></i><span className='footer-text'> + 91 7735784564 </span> </p>
-                            <p><i className="fa fa-phone me-3 ms-0"></i><span className='footer-text'> + 91 9008240665 </span> </p>
+                            <p><i className="fa fa-microchip me-3 ms-0"></i><span className='footer-text'> OpenAI Whisper</span></p>
+                            <p><i className="fa fa-cubes me-3 ms-0"></i><span className='footer-text'> GPT-4o LLM</span> </p>
+                            <p><i className="fa fa-eye me-3 ms-0"></i><span className='footer-text'> Gemini Vision OCR </span> </p>
+                            <p><i className="fa fa-cube me-3 ms-0"></i><span className='footer-text'> Three.js VRM </span> </p>
                         </div>
                     </div>
                 </div>
 
-                <div className="footer-copyright text-center py-3">© 2022 Copyright</div>
+                <div className="footer-copyright text-center py-3">© 2026 CodeCrafters. Built for Innovation.</div>
             </div>
             </footer>
     )
